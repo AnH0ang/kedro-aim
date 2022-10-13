@@ -1,0 +1,71 @@
+[tool.poetry]
+name = "kedro_aim"
+version = "0.1.0"
+description = "A plugin to integrate the mlops plattform aim into your kedro project"
+authors = ["An Hoang <anhoang31415@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.9.11"
+kedro = ">=0.18.0"
+pandas = ">=1.0.0"
+aim = "^3.14.1"
+pydantic = "^1.10.2"
+
+
+[tool.poetry.dev-dependencies]
+# Runnings notebook in vscode
+ipykernel = ">=6.9.2"
+
+# Testing
+pytest = ">=7.1.0"
+
+# Linting (Fix the version of linters to stay consitent with pre-commit)
+pre-commit = ">=2.18.0"
+commitizen = "2.23.0"
+black = "22.3.0"
+flake8 = "4.0.1"
+flake8-docstrings = "1.6.0"
+darglint = "1.8.1"
+isort = "5.10.1"
+pep8-naming = "0.13.0"
+pydocstyle = "6.1.1"
+mypy = "0.942"
+unimport = "0.9.5"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line_length = 100
+atomic = true
+
+[tool.unimport]
+gitignore = true
+remove = true
+include_star_import = true
+ignore_init = true
+
+[tool.isort]
+profile = "black"
+line_length = 100
+atomic = true
+
+[tool.mypy]
+follow_imports = "silent"
+strict_optional = true
+warn_redundant_casts = true
+disallow_any_generics = true
+check_untyped_defs = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_calls = false
+show_column_numbers = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = "pandas"
+ignore_missing_imports = true

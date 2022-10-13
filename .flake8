@@ -1,0 +1,12 @@
+[flake8]
+max-line-length = 100
+max-complexity = 18
+docstring-convention = google
+# Ignored flake8 exceptions:
+# * W503: black compatibility
+# * D104,D100: ignore missing docstring in on package/module level
+# * F401: ignore unused imports in __init__ file
+ignore = W503,D104,D100,DAR101,E203,D106
+per-file-ignores =
+    __init__.py: F401
+docstring_style=google
