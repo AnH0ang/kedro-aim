@@ -1,0 +1,18 @@
+disable:
+  pipelines: []
+
+repository:
+  # path:
+  read_only: false
+  init: false
+
+run:
+  # run_hash:
+  # experiment:
+  system_tracking_interval: 10
+  log_system_params: false
+  capture_terminal_logs: true
+
+ui:
+  port: 43800
+  host: 127.0.0.1

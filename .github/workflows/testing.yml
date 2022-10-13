@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Testing
 on:
   push:
     paths-ignore:
@@ -6,18 +6,27 @@ on:
     branches:
       - master
       - main
+      - dev
+  pull_request:
+    paths-ignore:
+      - docs/**
+    branches:
+      - "**"
 jobs:
   test:
     strategy:
       fail-fast: true
-    runs-on: ubuntu-latest
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.9.11]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
-          python-version: 3.9.11
+          python-version: ${{ matrix.python-version }}
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
@@ -34,11 +43,5 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Install library
         run: poetry install --no-interaction
-      - name: Build documentation
-        run: |
-          make build_html_docs
-      - name: Deploy documentation
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-pages
-          folder: docs/build/html
+      - name: Test with pytest
+        run: poetry run pytest

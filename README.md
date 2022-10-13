@@ -1,84 +1,78 @@
 # Kedro Aim
 
-A plugin to integrate the mlops plattform aim into your kedro project
+## 📝 Description
 
-## Overview
-
-**Client:** Statworx
-
-**Project duration:**
-
-**Status:**
-
-## ☎️ Contact
-
-In case of any questions, please contact:
-
-| Name     | Mail                   | Role           |
-| -------- | ---------------------- | -------------- |
-| An Hoang | anhoang31415@gmail.com | Data Scientist |
+`kedro-aim` is a [kedro-plugin](https://kedro.readthedocs.io/en/stable/extend_kedro/plugins.html) that enables tracking of metrics and parameters with [Aim](https://aimstack.io/) from within Kedro.
+Kedro is a great tool for data engineering and data science, but it lacks a clear way to track metrics and parameters.
+Aim is a great tool for tracking metrics and parameters, but it lacks a clear way to integrate with Kedro.
+This plugin aims to solve both problems.
 
 ## 🎖 Features
 
-* Feature 1
-* Feature 2
-* Feature 3
-* Feature 4
-
-## 🚀 Demo
-
-Insert gif or link to demo
+- Automatic Registration of Aim `Run` in Data Catalog
+- Tracking of Artifact with Aim DataSet
+- Configuration over `aim.yml`
 
 ## ⚙️ Installation
 
-A convinient `make` command is provided to install the project.
-It will create a virtual environment with the correct python version and install all packages with `poetry`.
-In addition all developement tools are installed with `brew` on macOS if they are not already installed.
+Install the package with `pip`:
 
 ```bash
-make install
+pip install kedro-aim
 ```
 
-## 🚧 Usage
+## 💡 Usage Examples
 
-The project can be run from the main entry point `src/main.py` with the following command.
+The plugin automatically registers a [Run](https://aimstack.readthedocs.io/en/latest/refs/sdk.html#aim.sdk.run.Run) instance in the DataCatalog under the name `run` which can be accessed by all nodes to log metrics and parameters.
+This run instance can be used track metrics and parameters in the same way as in any other [python project](https://aimstack.readthedocs.io/en/latest/quick_start/supported_types.html)
 
-```bash
-python src/main.py
+First you need to initilize the `aim.yml` config file inside your pre-existing Kedro project.
+This can be done by running the following command:
+
+```shell
+kedro aim init
 ```
 
-## 🧪 Testing
+In order to use `aim` inside a node you need to pass the run object as a argument of the function.
+Inside the function you can access the run object and use it to log metrics and parameters.
 
-The source code is tested with [pytest](https://docs.pytest.org/en/stable/).
-Every node and function should be tested with a unit test.
-The tests are located in the `src/tests` folder where every pipeline step has its own folder.
-For more information on how to write tests with pytest the [documentation](https://docs.pytest.org/en/stable/) or the example tests in the `src/tests` folder can be used as a reference.
-You can run your tests as follows:
+```python
+# nodes.py
+import pandas as pd
+from aim import Run
 
-```bash
-make test
+
+def logging_in_node(run: Run, data: pd.DataFrame) -> None:
+    # track metric
+    run.track(0.5, "score")
+
+    # track parameter
+    run["parameter"] = "abc"
 ```
 
-## 📝 Documentation
+When defining the pipeline, you need to pass the `run` dataset as a input to the node.
+The `run` dataset will be automatically created by `kedro-aim` and added to the DataCatalog.
+As a result, the `run` dataset will be passed to the node as an argument.
 
-The documentation for this project is built with [sphinx](https://www.sphinx-doc.org/en/master/).
-You can find the `.rst` files in the `docs` folder.
-There are two options to build the documentation.
-Either you build a static html version of the documentation or you build a live version that is updated automatically when you change the documentation.
-The live documentation can be accessed with the browser under `http://localhost:8000`.
-To build the documentation run the following commands:
+```python
+# pipeline.py
+from kedro.pipeline import node, Pipeline
+from kedro.pipeline.modular_pipeline import pipeline
 
-```bash
-make build_html_docs  # <- build static html documentation
-make serve_docs  # <- build live documentation
+
+def create_pipeline(**kwargs) -> Pipeline:
+    return pipeline(
+        [
+            node(
+                func=logging_in_node,
+                inputs=["run", "input_data"],
+                outputs=None,
+                name="logging_in_node",
+            )
+        ]
+    )
 ```
 
-## 🕵️‍♀️ FAQ
+## 🙏 Acknowledgement
 
-### Question 1
-
-Answer 1
-
-### Question 2
-
-Answer 2
+This project was inspired by the work of [kedro-mlflow](https://github.com/Galileo-Galilei/kedro-mlflow) which is a plugin for Kedro that enables tracking of metrics and parameters with [MLflow](https://mlflow.org/) from within Kedro.

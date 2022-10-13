@@ -1,0 +1,31 @@
+{
+    "recommendations": [
+        //python
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        //docstring
+        "njpwerner.autodocstring",
+        // git
+        "eamodio.gitlens",
+        "foxundermoon.shell-format",
+        // jupyter
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        // todo
+        "Gruntfuggly.todo-tree",
+        // yaml
+        "redhat.vscode-yaml",
+        // toml
+        "tamasfe.even-better-toml",
+        // spell checking
+        "streetsidesoftware.code-spell-checker",
+        // shell
+        "timonwong.shellcheck",
+        // higlighting
+        "usernamehw.errorlens",
+        // markdown
+        "DavidAnson.vscode-markdownlint",
+        "yzhang.markdown-all-in-one",
+    ]
+}

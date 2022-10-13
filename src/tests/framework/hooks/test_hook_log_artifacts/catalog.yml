@@ -1,0 +1,7 @@
+text_artifact:
+  type: kedro_aim.io.artifacts.AimArtifactDataSet
+  artifact_type: text
+  name: funny_joke
+  data_set:
+    type: kedro.extras.datasets.text.TextDataSet
+    filepath: test.md

@@ -1,0 +1,154 @@
+{
+  "title": "KedroAimConfig",
+  "description": "Options for the aim plugin.",
+  "type": "object",
+  "properties": {
+    "ui": {
+      "title": "Ui",
+      "default": {
+        "port": 43800,
+        "host": "127.0.0.1"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/UiOptions"
+        }
+      ]
+    },
+    "run": {
+      "title": "Run",
+      "default": {
+        "run_hash": null,
+        "experiment": null,
+        "system_tracking_interval": 10,
+        "log_system_params": false,
+        "capture_terminal_logs": true,
+        "tags": []
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/RunOptions"
+        }
+      ]
+    },
+    "repository": {
+      "title": "Repository",
+      "default": {
+        "path": null,
+        "read_only": false,
+        "init": false
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/RepositoryOptions"
+        }
+      ]
+    },
+    "disable": {
+      "title": "Disable",
+      "default": {
+        "pipelines": []
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/DisableOptions"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "UiOptions": {
+      "title": "UiOptions",
+      "description": "Options for the ui command.",
+      "type": "object",
+      "properties": {
+        "port": {
+          "title": "Port",
+          "default": 43800,
+          "type": "integer"
+        },
+        "host": {
+          "title": "Host",
+          "default": "127.0.0.1",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RunOptions": {
+      "title": "RunOptions",
+      "description": "Options for the run command.",
+      "type": "object",
+      "properties": {
+        "run_hash": {
+          "title": "Run Hash",
+          "type": "string"
+        },
+        "experiment": {
+          "title": "Experiment",
+          "type": "string"
+        },
+        "system_tracking_interval": {
+          "title": "System Tracking Interval",
+          "default": 10,
+          "type": "integer"
+        },
+        "log_system_params": {
+          "title": "Log System Params",
+          "default": false,
+          "type": "boolean"
+        },
+        "capture_terminal_logs": {
+          "title": "Capture Terminal Logs",
+          "default": true,
+          "type": "boolean"
+        },
+        "tags": {
+          "title": "Tags",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "RepositoryOptions": {
+      "title": "RepositoryOptions",
+      "description": "Options for the repository.",
+      "type": "object",
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "read_only": {
+          "title": "Read Only",
+          "default": false,
+          "type": "boolean"
+        },
+        "init": {
+          "title": "Init",
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DisableOptions": {
+      "title": "DisableOptions",
+      "description": "Options for disabling aim features.",
+      "type": "object",
+      "properties": {
+        "pipelines": {
+          "title": "Pipelines",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

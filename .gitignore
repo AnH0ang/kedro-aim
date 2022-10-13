@@ -1,5 +1,4 @@
 TODO.md
-.vscode
 .envrc
 
 # test notebooks
@@ -769,17 +768,6 @@ tags
 # Persistent undo
 [._]*.un~
 
-### VisualStudioCode ###
-.vscode/*
-# Hack for VSCode
-!.vscode/{% if*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-!.vscode/docstring.template
-
 # Local History for Visual Studio Code
 .history/
 
@@ -790,9 +778,6 @@ tags
 # Ignore all local history of files
 .history
 .ionide
-
-# Support for Project snippet scope
-.vscode/*.code-snippets
 
 # Ignore code-workspaces
 *.code-workspace
