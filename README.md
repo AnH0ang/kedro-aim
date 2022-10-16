@@ -16,6 +16,8 @@ Kedro is a great tool for data engineering and data science, but it lacks a clea
 Aim is a great tool for tracking metrics and parameters, but it lacks a clear way to integrate with Kedro.
 This plugin aims to solve both problems.
 
+![Aim Screenshot](./static/img/aim-screenshot.png)
+
 ## 🎖 Features
 
 - Automatic Registration of Aim `Run` in Data Catalog
