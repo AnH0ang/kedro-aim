@@ -1,10 +1,11 @@
 {
   "title": "KedroAimConfig",
-  "description": "Options for the aim plugin.",
+  "description": "The pydantic model for the `aim.yml` file which configures this plugin.",
   "type": "object",
   "properties": {
     "ui": {
       "title": "Ui",
+      "description": "Options for the aim ui.",
       "default": {
         "port": 43800,
         "host": "127.0.0.1"
@@ -17,6 +18,7 @@
     },
     "run": {
       "title": "Run",
+      "description": "Options for the aim run.",
       "default": {
         "run_hash": null,
         "experiment": null,
@@ -33,9 +35,10 @@
     },
     "repository": {
       "title": "Repository",
+      "description": "Configurations for the aim repository.",
       "default": {
         "path": null,
-        "read_only": false,
+        "read_only": null,
         "init": false
       },
       "allOf": [
@@ -46,6 +49,7 @@
     },
     "disable": {
       "title": "Disable",
+      "description": "Options for disabling aim tracking.",
       "default": {
         "pipelines": []
       },
@@ -65,11 +69,13 @@
       "properties": {
         "port": {
           "title": "Port",
+          "description": "Port to run the aim UI on.",
           "default": 43800,
           "type": "integer"
         },
         "host": {
           "title": "Host",
+          "description": "Host to run the aim UI on.",
           "default": "127.0.0.1",
           "type": "string"
         }
@@ -83,29 +89,35 @@
       "properties": {
         "run_hash": {
           "title": "Run Hash",
+          "description": "The hash of the run. If a run hash is selected that already exists, it will be logged to that run.",
           "type": "string"
         },
         "experiment": {
           "title": "Experiment",
+          "description": "The name of the experiment. 'default\u2019 if not specified. Can be used later to query runs/sequences",
           "type": "string"
         },
         "system_tracking_interval": {
           "title": "System Tracking Interval",
+          "description": "Sets the tracking interval in seconds for system usage metrics (CPU, Memory, etc.). Set to None to disable system metrics tracking.",
           "default": 10,
           "type": "integer"
         },
         "log_system_params": {
           "title": "Log System Params",
+          "description": "Enable/Disable logging of system params such as installed packages, git info, environment variables, etc.",
           "default": false,
           "type": "boolean"
         },
         "capture_terminal_logs": {
           "title": "Capture Terminal Logs",
+          "description": "Enable/Disable the capturing of terminal logs.",
           "default": true,
           "type": "boolean"
         },
         "tags": {
           "title": "Tags",
+          "description": "List of tags for the run.",
           "type": "array",
           "items": {
             "type": "string"
@@ -121,15 +133,17 @@
       "properties": {
         "path": {
           "title": "Path",
+          "description": "Path to the repository folder.",
           "type": "string"
         },
         "read_only": {
           "title": "Read Only",
-          "default": false,
+          "description": "Enable/Disable writes to repository.",
           "type": "boolean"
         },
         "init": {
           "title": "Init",
+          "description": "Enable/Disable initialilzation of repository folder before run.",
           "default": false,
           "type": "boolean"
         }
@@ -138,11 +152,12 @@
     },
     "DisableOptions": {
       "title": "DisableOptions",
-      "description": "Options for disabling aim features.",
+      "description": "Options for the disable command.",
       "type": "object",
       "properties": {
         "pipelines": {
           "title": "Pipelines",
+          "description": "List of pipelines in which tracking with aim will be disabled.",
           "type": "array",
           "items": {
             "type": "string"
