@@ -106,3 +106,8 @@ ignore_missing_imports = true
 [[tool.mypy.overrides]]
 module = "yaml"
 ignore_missing_imports = true
+
+[tool.commitizen]
+version = "0.1.0"
+version_files = ["src/kedro_aim/__init__.py", "pyproject.toml:version"]
+update_changelog_on_bump = true
