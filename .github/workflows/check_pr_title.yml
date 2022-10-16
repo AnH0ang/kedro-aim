@@ -1,4 +1,4 @@
-name: Pull Request Regex Title Labeler
+name: Validate PR Title
 on:
   pull_request_target:
     types: [opened, edited]
