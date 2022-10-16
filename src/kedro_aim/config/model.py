@@ -10,8 +10,8 @@ class UiOptions(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    port: int = 43800
-    host: str = "127.0.0.1"
+    port: int = Field(default=43800, description="Port to run the aim UI on.")
+    host: str = Field(default="127.0.0.1", description="Host to run the aim UI on.")
 
 
 class RunOptions(BaseModel):
@@ -20,12 +20,40 @@ class RunOptions(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    run_hash: Optional[str] = None
-    experiment: Optional[str] = None
-    system_tracking_interval: Optional[int] = DEFAULT_SYSTEM_TRACKING_INT
-    log_system_params: Optional[bool] = False
-    capture_terminal_logs: Optional[bool] = True
-    tags: List[str] = Field(default_factory=list)
+    run_hash: Optional[str] = Field(
+        default=None,
+        description=(
+            "The hash of the run. If a run hash is selected that already "
+            "exists, it will be logged to that run."
+        ),
+    )
+    experiment: Optional[str] = Field(
+        default=None,
+        description=(
+            "The name of the experiment. 'default’ if not specified. "
+            "Can be used later to query runs/sequences"
+        ),
+    )
+    system_tracking_interval: Optional[int] = Field(
+        default=DEFAULT_SYSTEM_TRACKING_INT,
+        description=(
+            "Sets the tracking interval in seconds for system usage metrics "
+            "(CPU, Memory, etc.). Set to None to disable system metrics tracking."
+        ),
+    )
+    log_system_params: Optional[bool] = Field(
+        default=False,
+        description=(
+            "Enable/Disable logging of system params such as installed packages, "
+            "git info, environment variables, etc."
+        ),
+    )
+    capture_terminal_logs: Optional[bool] = Field(
+        default=True, description="Enable/Disable the capturing of terminal logs."
+    )
+    tags: List[str] = Field(
+        default_factory=list, description="List of tags for the run."
+    )
 
 
 class RepositoryOptions(BaseModel):
@@ -34,15 +62,25 @@ class RepositoryOptions(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    path: Optional[str] = None
-    read_only: Optional[bool] = None
-    init: bool = False
+    path: Optional[str] = Field(
+        default=None, description="Path to the repository folder."
+    )
+    read_only: Optional[bool] = Field(
+        default=None, description="Enable/Disable writes to repository."
+    )
+    init: bool = Field(
+        default=False,
+        description="Enable/Disable initialilzation of repository folder before run.",
+    )
 
 
 class DisableOptions(BaseModel):
     """Options for the disable command."""
 
-    pipelines: List[str] = Field(default_factory=list)
+    pipelines: List[str] = Field(
+        default_factory=list,
+        description="List of pipelines in which tracking with aim will be disabled.",
+    )
 
 
 class KedroAimConfig(BaseModel):
@@ -51,7 +89,11 @@ class KedroAimConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    ui: UiOptions = UiOptions()
-    run: RunOptions = RunOptions()
-    repository: RepositoryOptions = RepositoryOptions()
-    disable: DisableOptions = DisableOptions()
+    ui: UiOptions = Field(UiOptions(), description="Options for the aim ui.")
+    run: RunOptions = Field(RunOptions(), description="Options for the aim run.")
+    repository: RepositoryOptions = Field(
+        RepositoryOptions(), description="Configurations for the aim repository."
+    )
+    disable: DisableOptions = Field(
+        DisableOptions(), description="Options for disabling aim tracking."
+    )
