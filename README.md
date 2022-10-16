@@ -73,6 +73,21 @@ def create_pipeline(**kwargs) -> Pipeline:
     )
 ```
 
+## 🧰 Config File
+
+The module is configured via the `aim.yml` file which should be placed inside the `conf/base` folder.
+A default config file can be generated using the `kedro aim init` command from the shell.
+
+You can enable the schema validation in your VSCode IDE to enable real-time validation, autocompletion and see information about the different fields in your catalog as you write it. To enable this, make sure you have the [YAML plugin](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) installed.
+Then enter the following in your `settings.json` file:
+
+```json
+{
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/AnH0ang/kedro-aim/master/static/jsonschema/kedro_aim_schema.json": "**/*aim*.yml"
+  }
+}
+```
 ## 🙏 Acknowledgement
 
 This project was inspired by the work of [kedro-mlflow](https://github.com/Galileo-Galilei/kedro-mlflow) which is a plugin for Kedro that enables tracking of metrics and parameters with [MLflow](https://mlflow.org/) from within Kedro.
