@@ -53,7 +53,12 @@ repos:
         name: flake8
         description: Your Tool For Style Guide Enforcement
         additional_dependencies:
-          [flake8-docstrings==1.6.0, pydocstyle==6.1.1, pep8-naming==0.13.0, darglint==1.8.1]
+          [
+            flake8-docstrings==1.6.0,
+            pydocstyle==6.1.1,
+            pep8-naming==0.13.0,
+            darglint==1.8.1,
+          ]
         files: \.py$
 
   - repo: https://github.com/pre-commit/mirrors-mypy
@@ -84,6 +89,17 @@ repos:
         name: unimport
         description: A linter, formatter for finding and removing unused import statements
         args: [--ignore-init, --include-star-import, --remove]
+
+  - repo: local
+    hooks:
+      - id: generate_json_schema
+        stages: [commit]
+        name: generate_json_schema
+        language: system
+        description: Generate the json schema for the `aim.yml` file
+        entry: python scripts/generate_json_schema.py
+        always_run: true
+        pass_filenames: false
 
   # TODO: include poetry hook if it is out of beta
   # - repo: https://github.com/python-poetry/poetry
