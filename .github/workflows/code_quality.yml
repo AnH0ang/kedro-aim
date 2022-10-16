@@ -19,3 +19,5 @@ jobs:
           python-version: 3.9.11
       - run: pip install click==8.0.0
       - uses: pre-commit/action@v2.0.3
+        env:
+          SKIP: generate_json_schema
