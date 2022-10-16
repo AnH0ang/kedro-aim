@@ -12,7 +12,7 @@ authors = ["An Hoang <anhoang31415@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "3.9.11"
+python = ">=3.8,<3.11"
 kedro = ">=0.18.0"
 aim = "^3.14.1"
 pydantic = "^1.10.2"
@@ -106,3 +106,8 @@ ignore_missing_imports = true
 [[tool.mypy.overrides]]
 module = "yaml"
 ignore_missing_imports = true
+
+[tool.commitizen]
+version = "0.1.0"
+version_files = ["src/kedro_aim/__init__.py", "pyproject.toml:version"]
+update_changelog_on_bump = true

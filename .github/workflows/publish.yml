@@ -1,47 +1,44 @@
-name: Testing
+name: Publish Package to PyPI
+
 on:
   push:
-    paths-ignore:
-      - docs/**
-    branches:
-      - master
-      - main
-      - dev
-  pull_request:
-    paths-ignore:
-      - docs/**
-    branches:
-      - "**"
+    tags:
+      - "*"
+
 jobs:
-  test:
-    strategy:
-      fail-fast: true
-      matrix:
-        os: [ubuntu-latest]
-        python-version: ["3.8", "3.9", "3.10"]
-    runs-on: ${{ matrix.os }}
+  bump-version:
+    runs-on: ubuntu-latest
+    name: Publish Package in PyPI
     steps:
-      - name: Check out repository code
+      - name: Check out
         uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
+
+      - name: Set up Python 3.8.11
         uses: actions/setup-python@v3
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.8.11
+
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
           virtualenvs-create: true
           virtualenvs-in-project: true
+
       - name: Load cached venv
         id: cached-poetry-dependencies
         uses: actions/cache@v3.0.1
         with:
           path: .venv
           key: venv-${{ runner.python-version }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
+
       - name: Install library
         run: poetry install --no-interaction
-      - name: Test with pytest
-        run: poetry run pytest
+
+      - name: Build
+        run: |
+          poetry build
+          poetry publish --username __token__ --password ${{ secrets.PYPI_PASSWORD }}
