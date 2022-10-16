@@ -1,5 +1,14 @@
 # Kedro Aim
 
+[![PyPI version](https://badge.fury.io/py/kedro-aim.svg)](https://badge.fury.io/py/kedro-aim)
+[![Python version](https://img.shields.io/badge/python-3.8|3.9|3.10-blue.svg)](https://pypi.org/project/kedro/)
+[![Documentation Status](https://readthedocs.org/projects/kedro-aim/badge/?version=latest)](https://kedro-aim.readthedocs.io/en/latest/?badge=latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Publish Package to PyPI](https://github.com/AnH0ang/kedro-aim/actions/workflows/publish.yml/badge.svg)](https://github.com/AnH0ang/kedro-aim/actions/workflows/publish.yml)
+[![Testing](https://github.com/AnH0ang/kedro-aim/actions/workflows/testing.yml/badge.svg)](https://github.com/AnH0ang/kedro-aim/actions/workflows/testing.yml)
+[![codecov](https://codecov.io/gh/AnH0ang/kedro-aim/branch/master/graph/badge.svg?token=X94NV660A9)](https://codecov.io/gh/AnH0ang/kedro-aim)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 ## 📝 Description
 
 `kedro-aim` is a [kedro-plugin](https://kedro.readthedocs.io/en/stable/extend_kedro/plugins.html) that enables tracking of metrics and parameters with [Aim](https://aimstack.io/) from within Kedro.
