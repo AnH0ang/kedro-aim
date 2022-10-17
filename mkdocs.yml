@@ -85,6 +85,7 @@ plugins:
 nav:
   - Home: index.md
   - Usage: logic/usage.md
+  - Configuration: logic/configuration.md
   - Developement: logic/developement.md
   - API Reference:
       - kedro_aim.aim: code/aim.md
@@ -92,3 +93,4 @@ nav:
       - kedro_aim.io: code/io.md
       - kedro_aim.framework.cli: code/cli.md
       - kedro_aim.framework.hooks: code/hooks.md
+  - Changelog: logic/changelog.md
