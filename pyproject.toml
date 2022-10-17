@@ -10,6 +10,25 @@ version = "0.1.1"
 description = "A plugin to integrate the mlops plattform aim into your kedro project"
 authors = ["An Hoang <anhoang31415@gmail.com>"]
 readme = "README.md"
+license = "MIT"
+keywords = ["kedro", "aim", "kedro-plugin"]
+homepage = "https://kedro-aim.readthedocs.io"
+documentation = "https://kedro-aim.readthedocs.io"
+repository = "https://github.com/AnH0ang/kedro-aim"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Framework :: Kedro",
+    "Environment :: Plugins",
+    "Framework :: Kedro",
+    "Intended Audience :: Developers",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
