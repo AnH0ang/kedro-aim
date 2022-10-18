@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 # [POETRY] =============================================================================
 [tool.poetry]
 name = "kedro_aim"
-version = "0.1.1"
+version = "0.1.2"
 description = "A plugin to integrate the mlops plattform aim into your kedro project"
 authors = ["An Hoang <anhoang31415@gmail.com>"]
 readme = "README.md"
@@ -133,6 +133,6 @@ module = "yaml"
 ignore_missing_imports = true
 
 [tool.commitizen]
-version = "0.1.1"
+version = "0.1.2"
 version_files = ["src/kedro_aim/__init__.py", "pyproject.toml:version"]
 update_changelog_on_bump = true
