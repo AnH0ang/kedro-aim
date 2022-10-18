@@ -215,7 +215,6 @@ class AimHook:
                    }
                 ```
 
-            run_result: The output of `Pipeline` run.
             pipeline: The `Pipeline` that was run.
             catalog: The `DataCatalog` used during the run.
         """
