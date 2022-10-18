@@ -99,6 +99,7 @@ Then enter the following in your `settings.json` file:
   }
 }
 ```
+
 ## 🙏 Acknowledgement
 
 This project was inspired by the work of [kedro-mlflow](https://github.com/Galileo-Galilei/kedro-mlflow) which is a plugin for Kedro that enables tracking of metrics and parameters with [MLflow](https://mlflow.org/) from within Kedro.
