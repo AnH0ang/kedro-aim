@@ -1,30 +1,19 @@
 # Kedro Aim
 
-[![PyPI version](https://badge.fury.io/py/kedro-aim.svg)](https://badge.fury.io/py/kedro-aim)
-[![Python version](https://img.shields.io/badge/python-3.8|3.9|3.10-blue.svg)](https://pypi.org/project/kedro/)
-[![Documentation Status](https://readthedocs.org/projects/kedro-aim/badge/?version=latest)](https://kedro-aim.readthedocs.io/en/latest/?badge=latest)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Publish Package to PyPI](https://github.com/AnH0ang/kedro-aim/actions/workflows/publish.yml/badge.svg)](https://github.com/AnH0ang/kedro-aim/actions/workflows/publish.yml)
-[![Testing](https://github.com/AnH0ang/kedro-aim/actions/workflows/testing.yml/badge.svg)](https://github.com/AnH0ang/kedro-aim/actions/workflows/testing.yml)
-[![codecov](https://codecov.io/gh/AnH0ang/kedro-aim/branch/master/graph/badge.svg?token=X94NV660A9)](https://codecov.io/gh/AnH0ang/kedro-aim)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-## 📝 Description
+## Description
 
 `kedro-aim` is a [kedro-plugin](https://kedro.readthedocs.io/en/stable/extend_kedro/plugins.html) that enables tracking of metrics and parameters with [Aim](https://aimstack.io/) from within Kedro.
 Kedro is a great tool for data engineering and data science, but it lacks a clear way to track metrics and parameters.
 Aim is a great tool for tracking metrics and parameters, but it lacks a clear way to integrate with Kedro.
 This plugin aims to solve both problems.
 
-![Aim Screenshot](./static/img/aim-screenshot.png)
-
-## 🎖 Features
+## Features
 
 - Automatic Registration of Aim `Run` in Data Catalog
 - Tracking of Artifact with Aim DataSet
 - Configuration over `aim.yml`
 
-## ⚙️ Installation
+## Installation
 
 Install the package with `pip`:
 
@@ -32,7 +21,7 @@ Install the package with `pip`:
 pip install kedro-aim
 ```
 
-## 💡 Usage Examples
+## Usage Examples
 
 The plugin automatically registers a [Run](https://aimstack.readthedocs.io/en/latest/refs/sdk.html#aim.sdk.run.Run) instance in the DataCatalog under the name `run` which can be accessed by all nodes to log metrics and parameters.
 This run instance can be used track metrics and parameters in the same way as in any other [python project](https://aimstack.readthedocs.io/en/latest/quick_start/supported_types.html)
@@ -84,7 +73,7 @@ def create_pipeline(**kwargs) -> Pipeline:
     )
 ```
 
-## 🧰 Config File
+## Config File
 
 The module is configured via the `aim.yml` file which should be placed inside the `conf/base` folder.
 A default config file can be generated using the `kedro aim init` command from the shell.
@@ -100,6 +89,6 @@ Then enter the following in your `settings.json` file:
 }
 ```
 
-## 🙏 Acknowledgement
+## Acknowledgement
 
 This project was inspired by the work of [kedro-mlflow](https://github.com/Galileo-Galilei/kedro-mlflow) which is a plugin for Kedro that enables tracking of metrics and parameters with [MLflow](https://mlflow.org/) from within Kedro.

@@ -40,6 +40,12 @@ pydantic = "^1.10.2"
 # Runnings notebook in vscode
 ipykernel = ">=6.9.2"
 
+# Documentation
+mkdocs = ">=1.3.0"
+mkdocs-material = ">=8.2.8"
+mkdocstrings = ">=0.18.1"
+mkdocstrings-python = ">=0.7.1"
+
 # Testing
 pytest = ">=7.1.0"
 pytest-mock = "^3.10.0"
