@@ -1,3 +1,9 @@
+## 0.1.3 (2022-10-23)
+
+### Fix
+
+- **template**: Add missing template `aim.yml` to build
+
 ## 0.1.2 (2022-10-18)
 
 ## 0.1.1 (2022-10-16)

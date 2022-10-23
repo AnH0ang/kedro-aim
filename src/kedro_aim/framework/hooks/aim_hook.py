@@ -108,9 +108,9 @@ class AimHook:
             run_params: The params used to run the pipeline.
                 Should have the following schema
 
-                ```
+                ```json
                    {
-                     "session_id": str
+                     "session_id": str,
                      "project_path": str,
                      "env": str,
                      "kedro_version": str,
@@ -197,9 +197,9 @@ class AimHook:
             run_params: The params used to run the pipeline.
                 Should have the following schema
 
-                ```
+                ```json
                    {
-                     "session_id": str
+                     "session_id": str,
                      "project_path": str,
                      "env": str,
                      "kedro_version": str,
@@ -240,9 +240,9 @@ class AimHook:
             run_params: The params used to run the pipeline.
                 Should have the following schema
 
-                ```
+                ```json
                    {
-                     "session_id": str
+                     "session_id": str,
                      "project_path": str,
                      "env": str,
                      "kedro_version": str,
