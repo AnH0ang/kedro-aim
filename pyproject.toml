@@ -15,6 +15,7 @@ keywords = ["kedro", "aim", "kedro-plugin"]
 homepage = "https://kedro-aim.readthedocs.io"
 documentation = "https://kedro-aim.readthedocs.io"
 repository = "https://github.com/AnH0ang/kedro-aim"
+include = ["src/kedro_aim/template/**/*"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3.7",
